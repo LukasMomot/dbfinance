@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc61a121-76c6-4c65-ab85-fb6e5ed8889a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/rest/currencyHandlers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/httpserver.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/httpserver.go" afterDir="false" />
-    </list>
+    <list default="true" id="cc61a121-76c6-4c65-ab85-fb6e5ed8889a" name="Default Changelist" comment="Added first logic calculation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,6 +69,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added first logic calculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added first logic calculation" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
