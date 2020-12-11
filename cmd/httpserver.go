@@ -24,6 +24,7 @@ func main() {
 	r.HandleFunc("/", HealthHandler).Methods("GET")
 	r.HandleFunc("/health", HealthHandler).Methods("GET")
 	// Currency
+	r.HandleFunc("/currency", rest.GetCurrencyRate)
 	r.HandleFunc("/currency/convert", rest.CalculateCurrencyHandler).
 		Queries(
 			"from", "{from}",

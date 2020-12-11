@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc61a121-76c6-4c65-ab85-fb6e5ed8889a" name="Default Changelist" comment="Added first logic calculation">
+    <list default="true" id="cc61a121-76c6-4c65-ab85-fb6e5ed8889a" name="Default Changelist" comment="Extract env keys to config">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/httpserver.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/httpserver.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest/currencyHandlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/rest/currencyHandlers.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/currency/currency.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/currency/currency.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +25,9 @@
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1lVD6zY3x8YqC8dVRn3e2YXyrcx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -76,7 +80,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added first logic calculation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added first logic calculation" />
+    <MESSAGE value="Extract env keys to config" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extract env keys to config" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

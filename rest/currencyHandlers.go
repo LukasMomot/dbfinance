@@ -19,6 +19,7 @@ func CalculateCurrencyHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetCurrencyRate(w http.ResponseWriter, r *http.Request) {
+	rate := currency.GetCurrentRate()
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "Get Currency rate")
+	fmt.Fprintf(w, "Get Currency rate %f", rate)
 }
