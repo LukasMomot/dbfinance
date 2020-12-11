@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/lukasmomot/dbfinance/rest"
 	"log"
 	"net/http"
 
@@ -13,6 +14,13 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", HealthHandler).Methods("GET")
 	r.HandleFunc("/health", HealthHandler).Methods("GET")
+	// Currency
+	r.HandleFunc("/currency/convert", rest.CalculateCurrencyHandler).
+		Queries(
+			"from", "{from}",
+			"to", "{to}",
+			"amount", "{amount}").
+		Methods("GET")
 
 	err := http.ListenAndServe(":3002", r)
 	if err != nil {
