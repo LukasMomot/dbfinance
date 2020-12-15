@@ -3,11 +3,12 @@ package currency
 import (
 	"encoding/json"
 	"fmt"
-	conf "github.com/lukasmomot/dbfinance"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+
+	conf "github.com/lukasmomot/dbfinance"
 )
 
 // ConvertCurrency converts the currency
@@ -18,13 +19,14 @@ func ConvertCurrency(from string, to string, amount float64) float64 {
 	return amount * 4
 }
 
-func GetCurrentRate() float64 {
+// GetCurrentRate gets the current currency rate
+func GetCurrentRate(from string, to string) (float64, error) {
 	apiKey := os.Getenv(conf.FixerAPIKey)
-	url := fmt.Sprintf("http://data.fixer.io/api/latest?access_key=%s&base=EUR&symbols=PLN", apiKey)
+	url := fmt.Sprintf("http://data.fixer.io/api/latest?access_key=%s&base=%s&symbols=%s", apiKey, from, to)
 	response, err := http.Get(url)
 	if err != nil {
+		log.Fatal("Cannot perform request to fixer.io")
 		fmt.Print(err.Error())
-		os.Exit(1)
 	}
 
 	// Declared an empty interface
@@ -32,18 +34,24 @@ func GetCurrentRate() float64 {
 
 	responseData, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Cannot deserialize response")
 	}
 
 	// Unmarshal or Decode the JSON to the interface.
 	err = json.Unmarshal(responseData, &result)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Cannot parse JSON response.")
 	}
+
+	if result["success"] == false {
+		fmt.Println(result)
+		return 0, fmt.Errorf("Request error")
+	}
+
 	rates := result["rates"].(map[string]interface{})
-	pln := rates["PLN"]
+	rate := rates[to]
 
-	fmt.Println(pln)
+	fmt.Println(rate)
 
-	return pln.(float64)
+	return rate.(float64), nil
 }

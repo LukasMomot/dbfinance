@@ -19,7 +19,17 @@ func CalculateCurrencyHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetCurrencyRate(w http.ResponseWriter, r *http.Request) {
-	rate := currency.GetCurrentRate()
+	vars := mux.Vars(r)
+	from := vars["from"]
+	to := vars["to"]
+
+	rate, err := currency.GetCurrentRate(from, to)
+	if err != nil {
+		w.WriteHeader(http.StatusUnprocessableEntity)
+		fmt.Fprintf(w, "Cannot process request")
+		return
+	}
+
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "Get Currency rate %f", rate)
 }

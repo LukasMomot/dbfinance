@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc61a121-76c6-4c65-ab85-fb6e5ed8889a" name="Default Changelist" comment="Add http client call">
+    <list default="true" id="cc61a121-76c6-4c65-ab85-fb6e5ed8889a" name="Default Changelist" comment="Add fixer call to get currency rate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/httpserver.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/httpserver.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest/currencyHandlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/rest/currencyHandlers.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/currency/currency.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/currency/currency.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,9 +82,21 @@
     <MESSAGE value="Added first logic calculation" />
     <MESSAGE value="Extract env keys to config" />
     <MESSAGE value="Add http client call" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add http client call" />
+    <MESSAGE value="Add fixer call to get currency rate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add fixer call to get currency rate" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/services/currency/currency.go</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
