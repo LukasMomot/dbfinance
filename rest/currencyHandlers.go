@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gorilla/mux"
 	"github.com/lukasmomot/dbfinance/services/currency"
@@ -15,15 +16,37 @@ type CurrentRateResponse struct {
 	Rate float64 `json:"rate"`
 }
 
+type CurrencyConvertionResponse struct {
+	From             string  `json:"from"`
+	To               string  `json:"to"`
+	Rate             float64 `json:"rate"`
+	ConvertionResult float64 `json:"convertionResult"`
+}
+
 func CalculateCurrencyHandler(w http.ResponseWriter, r *http.Request) {
-	// TODO: IMPLEMENT THE METHOD
 	vars := mux.Vars(r)
-	fmt.Println(vars)
+	from := vars["from"]
+	to := vars["to"]
+	amountStr := vars["amount"]
+	amount, _ := strconv.ParseFloat(amountStr, 64)
 
-	v := currency.ConvertCurrency("PLN", "USD", 2)
-
+	rate, value, err := currency.ConvertCurrency(from, to, amount)
+	if err != nil {
+		w.WriteHeader(http.StatusUnprocessableEntity)
+		fmt.Fprintf(w, "Cannot process request")
+		return
+	}
+	result := &CurrencyConvertionResponse{
+		From:             from,
+		To:               to,
+		Rate:             rate,
+		ConvertionResult: value,
+	}
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "Calculate Currency %f", v)
+
+	rsp, _ := json.Marshal(result)
+	w.Write(rsp)
 }
 
 func GetCurrencyRate(w http.ResponseWriter, r *http.Request) {
