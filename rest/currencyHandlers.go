@@ -1,12 +1,19 @@
 package rest
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
 	"github.com/lukasmomot/dbfinance/services/currency"
 )
+
+type CurrentRateResponse struct {
+	From string  `json:"from"`
+	To   string  `json:"to"`
+	Rate float64 `json:"rate"`
+}
 
 func CalculateCurrencyHandler(w http.ResponseWriter, r *http.Request) {
 	// TODO: IMPLEMENT THE METHOD
@@ -31,7 +38,14 @@ func GetCurrencyRate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	// TODO: Find out to return JSON or simple number
-	fmt.Fprintf(w, "Get Currency rate %f", rate)
+	response := &CurrentRateResponse{
+		From: from,
+		To:   to,
+		Rate: rate,
+	}
+
+	rsp, _ := json.Marshal(response)
+	w.Write(rsp)
 }
