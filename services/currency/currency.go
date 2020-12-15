@@ -13,6 +13,7 @@ import (
 
 // ConvertCurrency converts the currency
 func ConvertCurrency(from string, to string, amount float64) float64 {
+	// TODO: IMPLEMENT THE METHOD
 	fmt.Printf("From: %s, to: %s", from, to)
 	apiKey := os.Getenv(conf.FixerAPIKey)
 	fmt.Printf("FIXER key for api: %s", apiKey)

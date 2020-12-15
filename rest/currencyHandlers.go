@@ -9,6 +9,7 @@ import (
 )
 
 func CalculateCurrencyHandler(w http.ResponseWriter, r *http.Request) {
+	// TODO: IMPLEMENT THE METHOD
 	vars := mux.Vars(r)
 	fmt.Println(vars)
 
@@ -31,5 +32,6 @@ func GetCurrencyRate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
+	// TODO: Find out to return JSON or simple number
 	fmt.Fprintf(w, "Get Currency rate %f", rate)
 }
