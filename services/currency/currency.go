@@ -19,7 +19,8 @@ func ConvertCurrency(from string, to string, amount float64) float64 {
 }
 
 func GetCurrentRate() float64 {
-	url := "http://data.fixer.io/api/latest?access_key=aedbdc91761c33c885c77367c12fdb99&base=EUR&symbols=PLN"
+	apiKey := os.Getenv(conf.FixerAPIKey)
+	url := fmt.Sprintf("http://data.fixer.io/api/latest?access_key=%s&base=EUR&symbols=PLN", apiKey)
 	response, err := http.Get(url)
 	if err != nil {
 		fmt.Print(err.Error())
